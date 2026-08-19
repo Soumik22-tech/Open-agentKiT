@@ -1,0 +1,4 @@
+anthropic>=0.34.0
+rich>=13.7.0
+psycopg2-binary>=2.9.0
+mysql-connector-python>=8.0.0
