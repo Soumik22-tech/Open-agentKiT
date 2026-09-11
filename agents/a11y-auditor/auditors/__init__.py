@@ -1,0 +1,1 @@
+"""Static accessibility auditing rules."""

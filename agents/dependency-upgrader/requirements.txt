@@ -1,0 +1,5 @@
+anthropic>=0.34.0
+rich>=13.7.0
+requests>=2.31.0
+packaging>=23.0
+tomli>=2.0.0; python_version < "3.11"

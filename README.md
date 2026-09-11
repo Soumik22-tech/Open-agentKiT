@@ -1,415 +1,437 @@
-# AI Agents — Open Source Replacement for $1000+/month in SaaS Tools
+# Open-agentKiT — 20 Free AI Agents That Replace $1,300+/Month in SaaS Tools
 
-15 production-ready Python CLI agents that replicate expensive SaaS products. Built with Claude AI, zero dependencies beyond Anthropic SDK + Rich terminal UI.
+Production-ready Python CLI agents powered by the Claude API. Each one replicates the core value of an expensive SaaS product — code review, security scanning, dependency risk assessment, meeting notes, incident postmortems, and more — as a script you own and run yourself.
 
-**Total SaaS value replaced: $1000+/month**
+No subscriptions. No vendor lock-in. You bring your own `ANTHROPIC_API_KEY` and pay only for what you use — typically **$0.01–$0.60 per run**, instead of a monthly SaaS bill.
 
 ---
 
-## The 15 Agents
+## Why this exists
 
-### Batch 1: Code Intelligence (GitHub Copilot Replacement)
+Most "AI agent" repos are demos. These are not. Every agent here was built to be actually run against real projects, real git history, real databases, and real config files — and every one has been tested against real inputs (not just reviewed as code) before being pushed here.
 
-| Agent | SaaS Equivalent | Price | What It Does | Cost to Run |
-|-------|-----------------|-------|-------------|------------|
-| **PR Reviewer** | GitHub Copilot | $10/mo | Analyzes pull requests, generates detailed code review feedback | ~$0.10 per PR |
-| **Codebase Explainer** | Codeium/GitHub Copilot Chat | $10/mo | Clones any GitHub repo, generates comprehensive project explanation | ~$0.05 per project |
-| **Bug Hunter** | Static analysis tools (ESLint, Pylint) | ~$50/mo | Finds real logic bugs in code, shows fixes with confidence scores | ~$0.02 per file |
-| **Commit Writer** | Conventional Commits IDE extensions | $0/mo | Generates 3 conventional commit message options from git diff | ~$0.01 per commit |
-| **README Generator** | ReadMe.io (basic) | $100/mo | Analyzes local project, generates professional README.md | ~$0.05 per project |
+---
 
-### Batch 2: Business Logic Automation
+## The 20 Agents
 
-| Agent | SaaS Equivalent | Price | What It Does | Cost to Run |
-|-------|-----------------|-------|-------------|------------|
-| **Security Scanner** | Snyk | $98/mo | Two-phase security scanning (regex prescan + Claude deep analysis) | ~$0.20 per scan |
-| **Query Builder** | Outerbase | $50/mo | Natural language → SQL for PostgreSQL, MySQL, SQLite | ~$0.02 per query |
-| **Refactor Agent** | Devin AI | $500/mo | Multi-file code refactoring with planning, execution, rollback | ~$0.30 per refactoring |
-| **Research Agent** | Perplexity Pro | $20/mo | Web search + synthesis + report generation with citations | ~$0.10-$0.60 per report |
-| **API Doc Generator** | ReadMe.io | $100/mo | FastAPI/Flask → OpenAPI spec + HTML docs + Postman collection | ~$0.05 per project |
+### Code Intelligence
 
-### Batch 3: Developer Workflow & Data Intelligence
+| Agent | Replaces | Typical Price | What It Does |
+|---|---|---|---|
+| **PR Reviewer** | GitHub Copilot code review | $10/mo | Analyzes a GitHub PR diff, returns structured review with bugs, security issues, and a verdict |
+| **Codebase Explainer** | Copilot Chat / onboarding time | $10/mo | Clones any repo, explains architecture, tech stack, and key files |
+| **Bug Hunter** | SonarQube / static analysis suites | $50+/mo | Finds real logic bugs (not style issues) with confidence scores and fixes |
+| **Commit Writer** | Conventional Commit IDE plugins | $0–5/mo | Generates 3 Conventional Commit message options from your staged diff |
+| **README Generator** | ReadMe.io (basic tier) | $100/mo | Reads your actual code and generates a real, non-generic README |
 
-| Agent | SaaS Equivalent | Price | What It Does | Cost to Run |
-|-------|-----------------|-------|-------------|------------|
-| **Changelog Generator** | Release Notes automation | $0/mo | Git log → professional release notes (Keep a Changelog format) | ~$0.05 per release |
-| **Test Suite Generator** | GitHub Copilot + pytest | $30/mo | Source code → comprehensive pytest tests with validation loop | ~$0.10 per file |
-| **Log Analyzer** | Splunk/DataDog | $200+/mo | Error logs + stack traces → root cause analysis + code context | ~$0.08 per log |
-| **Meeting Agent** | Otter.ai | $30/mo | Meeting transcript → summary, decisions, action items with owners/deadlines | ~$0.10 per meeting |
-| **Data Analyst** | Retool/Tableau + analyst time | $300+/mo | Interactive CSV/Excel analysis via natural language pandas queries | ~$0.02 per query |
+### Business & Infra Automation
+
+| Agent | Replaces | Typical Price | What It Does |
+|---|---|---|---|
+| **Security Scanner** | Snyk | $98/mo | Two-phase scan (instant regex + Claude deep analysis) for real exploitable vulnerabilities |
+| **Query Builder** | Outerbase / Retool | $50/mo | Natural language → SQL for PostgreSQL, MySQL, and SQLite, read-only by default |
+| **Refactor Agent** | Devin-style autonomous coding | $500/mo | Plans and executes multi-file refactors with git backup and rollback |
+| **Research Agent** | Perplexity Pro | $20/mo | Searches the web, reads full pages, writes a cited research report |
+| **API Doc Generator** | ReadMe.io / Swagger hosting | $100/mo | FastAPI/Flask routes → OpenAPI spec, HTML docs, and a Postman collection |
+
+### Developer Workflow & Data
+
+| Agent | Replaces | Typical Price | What It Does |
+|---|---|---|---|
+| **Changelog Generator** | Manual release notes | Time cost | Git log between two refs → categorized, human-readable changelog |
+| **Test Suite Generator** | Manual test writing | Time cost | Generates pytest tests, then runs them and reports validation results |
+| **Log Analyzer** | Splunk / Datadog error intelligence | $200+/mo | Stack trace → root cause, severity, and fix, with local code context |
+| **Meeting Agent** | Otter.ai / Fireflies | $20–30/mo | Transcript → summary, decisions, and action items with owners and deadlines |
+| **Data Analyst** | Tableau / ChatGPT Code Interpreter | $20–300+/mo | Ask questions about a CSV/Excel file in plain English, get tables and analysis |
+
+### Engineering Operations
+
+| Agent | Replaces | Typical Price | What It Does |
+|---|---|---|---|
+| **Dependency Upgrader** | Dependabot / Renovate | $0–50/mo | Reads real changelogs and your actual code's usage before rating upgrade risk |
+| **Onboarding Generator** | New-hire ramp-up time | Time cost | Repo structure, setup steps, git-history ownership map, and bus-factor warnings |
+| **Config Auditor** | A dedicated DevOps reviewer | High staff cost | Audits Dockerfiles, Kubernetes manifests, and CI configs; CI-gateable |
+| **Postmortem Writer** | Incident management platforms | $20+/mo | Raw incident notes → a blameless, SRE-style postmortem document |
+| **Accessibility Auditor** | axe DevTools Pro | Per-seat cost | Scans HTML/JSX/TSX/Vue source for WCAG violations with plain-English impact |
 
 ---
 
 ## Quick Start
 
-### Prerequisites
-- Python 3.10+
-- `pip`
-- `ANTHROPIC_API_KEY` set in environment or `.env`
-
-### Install Any Agent
+**Prerequisites:** Python 3.10+, `pip`, and an `ANTHROPIC_API_KEY`.
 
 ```bash
-# Example: Security Scanner
-cd agents/security-scanner
+cd agents/{agent-name}
 pip install -r requirements.txt
-python agent.py --project /path/to/codebase
+cp .env.example .env   # add your ANTHROPIC_API_KEY
+python agent.py [options]
 ```
 
-All agents follow the same pattern:
-1. `cd agents/{agent-name}`
-2. `pip install -r requirements.txt`
-3. Copy `.env.example` to `.env` (only needs `ANTHROPIC_API_KEY`)
-4. Run `python agent.py [options]`
+Every agent is fully independent — clone the repo, `cd` into the one you need, and run it. You don't need to set up all 20.
 
 ---
 
 ## Usage Examples
 
-### 1. Code Review (PR Reviewer)
 ```bash
+# Review a pull request
 cd agents/pr-reviewer
 python agent.py --pr https://github.com/owner/repo/pull/123
-```
 
-### 2. Explain Any GitHub Repo (Codebase Explainer)
-```bash
+# Understand a new codebase in seconds
 cd agents/codebase-explainer
 python agent.py --repo https://github.com/owner/repo --depth standard
-```
 
-### 3. Find Bugs in Your Code (Bug Hunter)
-```bash
+# Find real logic bugs
 cd agents/bug-hunter
 python agent.py --file src/utils.py
-```
 
-### 4. Generate Commit Messages (Commit Writer)
-```bash
+# Write your commit message for you
 cd agents/commit-writer
 git add .
-python agent.py  # Shows 3 commit options, pick one
-```
+python agent.py
 
-### 5. Generate README (README Generator)
-```bash
-cd agents/readme-generator
-python agent.py --project /path/to/your/project --style standard
-```
-
-### 6. Security Audit (Security Scanner)
-```bash
+# Full security audit
 cd agents/security-scanner
 python agent.py --project /path/to/codebase --severity HIGH,CRITICAL
-```
 
-### 7. Query Your Database in English (Query Builder)
-```bash
+# Query a database in plain English
 cd agents/query-builder
 python agent.py --db postgresql://user:pass@localhost/mydb
-# Then: "Show me top 10 customers by revenue last month"
-```
 
-### 8. Refactor Multiple Files (Refactor Agent)
-```bash
+# Refactor across many files with rollback safety
 cd agents/refactor-agent
 python agent.py --project . --goal "convert all callbacks to async/await"
-```
 
-### 9. Research a Topic (Research Agent)
-```bash
+# Research a topic with citations
 cd agents/research-agent
 python agent.py --topic "impact of AI on software engineering" --depth deep --html
-```
 
-### 10. Generate API Docs (API Doc Generator)
-```bash
-cd agents/api-doc-generator
-python agent.py --project /path/to/fastapi/app --serve
-# Generates: openapi.json, index.html, postman_collection.json
-```
-
-### 11. Generate Release Notes (Changelog Generator)
-```bash
+# Generate release notes between two tags
 cd agents/changelog-generator
 python agent.py --from v1.2.0 --to v1.3.0 --output CHANGELOG.md --append
-```
 
-### 12. Generate Test Suites (Test Suite Generator)
-```bash
+# Generate and run a real test suite
 cd agents/test-generator
-python agent.py --file src/utils.py --run --coverage
-```
+python agent.py --file src/utils.py --run
 
-### 13. Analyze Error Logs (Log Analyzer)
-```bash
-cd agents/log-analyzer
-python agent.py --log error.log --repo /path/to/project
-# Or: cat error.log | python agent.py --stdin
-```
-
-### 14. Extract Meeting Action Items (Meeting Agent)
-```bash
+# Turn a meeting transcript into action items
 cd agents/meeting-agent
-python agent.py --transcript zoom_transcript.vtt --output notes.md --format markdown
-# Or: --format slack, --format jira
-```
+python agent.py --transcript zoom_transcript.vtt --output notes.md
 
-### 15. Analyze Data with SQL-less Queries (Data Analyst)
-```bash
+# Talk to your spreadsheet
 cd agents/data-analyst
 python agent.py --file data.csv
-# Interactive: "Show top 10 rows by date", "Average salary by department", etc.
+
+# Check if a dependency upgrade is actually safe
+cd agents/dependency-upgrader
+python agent.py --project . --output upgrade-report.md
+
+# Generate a real onboarding doc from git history
+cd agents/onboarding-generator
+python agent.py --project . --output ONBOARDING.md
+
+# Audit your Dockerfiles, K8s manifests, and CI configs
+cd agents/config-auditor
+python agent.py --project . --rules-only --ci-mode
+
+# Turn incident notes into a blameless postmortem
+cd agents/postmortem-writer
+python agent.py --notes incident-notes.txt --output postmortem.md
+
+# Catch accessibility issues before you deploy
+cd agents/a11y-auditor
+python agent.py --project . --rules-only --output a11y-report.html
 ```
 
----
-
-## Architecture Highlights
-
-### Design Principles
-- **Modular:** Each agent is independent, can be run standalone
-- **Production-Ready:** Real CLI tools, not proof-of-concepts
-- **Safe:** Security Scanner creates git backups, Query Builder read-only mode, Refactor Agent validates syntax
-- **Clear IO:** JSON-structured Claude responses for deterministic output
-- **Terminal-First:** Rich UI with progress bars, colored output, pretty tables
-
-### Key Technologies
-- **Anthropic Claude API** — All AI reasoning
-- **Rich Library** — Beautiful terminal UI
-- **Git/GitHub API** — PR Reviewer, Refactor Agent
-- **Database Drivers** — Query Builder (SQLite, PostgreSQL, MySQL)
-- **AST Parsing** — Bug Hunter (6 languages), API Doc Generator (route extraction)
-- **DuckDuckGo Search** — Research Agent (no API key needed)
-
-### Cost Efficiency
-- All agents use `claude-sonnet-4-20250514` (fastest, cheapest, sufficient)
-- Average cost per operation: **$0.01–$0.30** (vs. $50–$500/month SaaS)
-- Can pay-as-you-go: no subscriptions, no minimum commits
+Full option lists are documented in each agent's own `README.md`.
 
 ---
 
-## Technical Details
+## What Makes These Different From a Demo Repo
 
-### Two-Phase Scanning (Security Scanner)
-1. **Phase 1:** Regex patterns scan instantly (no API calls)
-   - Finds obvious issues: hardcoded secrets, `shell=True`, `eval()`, etc.
-2. **Phase 2:** Claude deep analysis on flagged files
-   - Full context, real vulnerability assessment, fix suggestions
+- **Two-tier checks where it matters.** Security Scanner and Config Auditor run instant, free, rule-based checks first, and only call Claude for the deeper contextual pass — so `--rules-only` mode needs no API key at all.
+- **Real safety rails.** Refactor Agent creates a git backup branch and a restorable manifest before touching a single file. Query Builder is read-only by default. Data Analyst runs generated code in a sandboxed namespace with no access to `os`, `eval`, `exec`, or `open`.
+- **Validation, not blind trust.** Test Suite Generator runs generated tests and reports the result instead of handing you unvalidated code.
+- **Honest about limits.** Where a feature isn't implemented yet, such as JS/TS support in Test Suite Generator or Node/Go parsers in API Doc Generator, the agent says so clearly instead of pretending or failing silently.
 
-### Interactive REPL (Query Builder)
-- Connect once, ask multiple queries
-- Schema cached locally
-- All queries read-only (SELECT only)
-
-### Multi-File Orchestration (Refactor Agent)
-1. Analyzes codebase → identifies files needing changes
-2. Generates new content per file
-3. Creates git backup branch (safe rollback)
-4. Validates syntax before writing
-5. User approval before execution
-
-### Web Search + Synthesis (Research Agent)
-- Searches multiple sources
-- Extracts clean content (no ads/nav)
-- Synthesizes with inline citations `[1][2]`
-- Three depth levels: quick ($0.10), standard ($0.25), deep ($0.60)
-
-### OpenAPI + HTML + Postman (API Doc Generator)
-- AST parsing for FastAPI/Flask routes
-- Auto-generates specs importable into Swagger UI, Postman, Insomnia
-- Self-contained HTML with dark/light mode and search
+Each agent folder contains its own `agent.py`, `requirements.txt`, `.env.example`, and `README.md` with detailed usage docs specific to that tool.
 
 ---
 
 ## Project Structure
 
-```
+The repository is intentionally organized as 20 independent Python CLI projects. Each agent can
+be installed and run without importing the other agents. This keeps dependencies, safety behavior,
+API prompts, and output formats isolated: you can use one tool in a CI job without installing the
+rest of the suite.
+
+```text
 .
+├── README.md                         # This overview and the complete usage guide
 ├── agents/
 │   ├── pr-reviewer/
-│   │   ├── agent.py           # Main CLI
-│   │   ├── requirements.txt
-│   │   ├── .env.example
-│   │   └── README.md          # Usage docs
+│   │   ├── agent.py                   # GitHub PR URL parsing, diff retrieval, review orchestration
+│   │   ├── requirements.txt           # Anthropic, Rich, and HTTP dependencies
+│   │   ├── .env.example               # Required environment variables
+│   │   └── README.md                  # Agent-specific setup and examples
+│   │
 │   ├── codebase-explainer/
+│   │   ├── agent.py                   # Repository cloning, file selection, stack detection, explanation
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
 │   ├── bug-hunter/
+│   │   ├── agent.py                   # Multi-language bug analysis and fixed-code output
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
 │   ├── commit-writer/
+│   │   ├── agent.py                   # Staged diff analysis and Conventional Commit selection
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
 │   ├── readme-generator/
+│   │   ├── agent.py                   # Project scanning, command detection, README generation
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
 │   ├── security-scanner/
-│   │   ├── agent.py
-│   │   ├── scanner/            # Modular subpackage
-│   │   │   ├── file_scanner.py
-│   │   │   ├── regex_prescan.py
-│   │   │   └── ai_scanner.py
+│   │   ├── agent.py                   # CLI orchestration, reporting, filtering, and fix output
+│   │   ├── scanner/
+│   │   │   ├── file_scanner.py        # Project file discovery and .gitignore handling
+│   │   │   ├── regex_prescan.py       # Fast secret and dangerous-pattern checks
+│   │   │   └── ai_scanner.py          # Claude deep analysis for flagged files
 │   │   ├── requirements.txt
-│   │   └── .env.example
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
 │   ├── query-builder/
-│   │   ├── agent.py
-│   │   ├── db/                 # Modular subpackage
-│   │   │   ├── connector.py
-│   │   │   └── schema_extractor.py
+│   │   ├── agent.py                   # Natural-language query REPL and approval flow
+│   │   ├── db/
+│   │   │   ├── connector.py           # SQLite, PostgreSQL, and MySQL connections
+│   │   │   └── schema_extractor.py    # Tables, columns, types, and relationships
 │   │   ├── requirements.txt
-│   │   └── .env.example
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
 │   ├── refactor-agent/
-│   │   ├── agent.py
-│   │   ├── core/               # Modular subpackage
-│   │   │   ├── planner.py
-│   │   │   ├── executor.py
-│   │   │   ├── validator.py
-│   │   │   └── rollback.py
+│   │   ├── agent.py                   # Planning, approval, execution, and rollback orchestration
+│   │   ├── core/
+│   │   │   ├── planner.py             # File discovery and refactoring plan generation
+│   │   │   ├── executor.py            # Controlled edits and session manifest creation
+│   │   │   ├── validator.py            # Syntax and post-edit validation
+│   │   │   └── rollback.py             # Restore files from a recorded refactor session
 │   │   ├── requirements.txt
-│   │   └── .env.example
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
 │   ├── research-agent/
-│   │   ├── agent.py
-│   │   ├── research/           # Modular subpackage
-│   │   │   ├── searcher.py
-│   │   │   └── synthesizer.py
+│   │   ├── agent.py                   # Topic CLI, depth selection, and report output
+│   │   ├── research/
+│   │   │   ├── searcher.py             # Web search, page fetching, and content cleanup
+│   │   │   └── synthesizer.py          # Claude synthesis with source citations
 │   │   ├── requirements.txt
-│   │   └── .env.example
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
 │   ├── api-doc-generator/
-│   │   ├── agent.py
-│   │   ├── parsers/            # Modular subpackage
-│   │   │   ├── python_parser.py
-│   │   │   ├── node_parser.py
-│   │   │   └── go_parser.py
-│   │   ├── generators/         # Modular subpackage
-│   │   │   ├── openapi.py
-│   │   │   ├── html_docs.py
-│   │   │   └── postman.py
+│   │   ├── agent.py                   # Framework detection and documentation orchestration
+│   │   ├── parsers/
+│   │   │   ├── python_parser.py       # FastAPI and Flask AST route extraction
+│   │   │   ├── node_parser.py         # Explicitly reports Node.js as unsupported
+│   │   │   └── go_parser.py           # Explicitly reports Go as unsupported
+│   │   ├── generators/
+│   │   │   ├── openapi.py              # OpenAPI 3.0 document generation
+│   │   │   ├── html_docs.py             # Self-contained searchable HTML docs
+│   │   │   └── postman.py               # Postman collection export
 │   │   ├── requirements.txt
-│   │   └── .env.example
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
 │   ├── changelog-generator/
-│   │   ├── agent.py
+│   │   ├── agent.py                   # Git range parsing, grouping prompt, and release-note rendering
 │   │   ├── requirements.txt
 │   │   ├── .env.example
 │   │   └── README.md
+│   │
 │   ├── test-generator/
-│   │   ├── agent.py
-│   │   ├── generators/         # Modular subpackage
-│   │   │   ├── python_analyzer.py
-│   │   │   ├── js_analyzer.py
-│   │   │   └── test_writer.py
+│   │   ├── agent.py                   # Source selection, test generation, and test execution CLI
+│   │   ├── generators/
+│   │   │   ├── python_analyzer.py     # Python AST function and method extraction
+│   │   │   ├── js_analyzer.py         # Reserved module for planned JS/TS support
+│   │   │   └── test_writer.py          # Claude pytest generation and result parsing
 │   │   ├── requirements.txt
 │   │   ├── .env.example
 │   │   └── README.md
+│   │
 │   ├── log-analyzer/
-│   │   ├── agent.py
-│   │   ├── analyzer/           # Modular subpackage
-│   │   │   ├── log_parser.py
-│   │   │   ├── code_context.py
-│   │   │   └── pattern_db.py
+│   │   ├── agent.py                   # Log input, Claude analysis, and terminal reporting
+│   │   ├── analyzer/
+│   │   │   ├── log_parser.py           # Python, JavaScript, Java, and generic log parsing
+│   │   │   ├── code_context.py         # Stack-trace file lookup and source snippets
+│   │   │   └── pattern_db.py           # Deterministic known-error pattern matching
 │   │   ├── requirements.txt
 │   │   ├── .env.example
 │   │   └── README.md
+│   │
 │   ├── meeting-agent/
-│   │   ├── agent.py
-│   │   ├── parsers/            # Modular subpackage
-│   │   │   ├── format_detector.py
-│   │   │   └── speaker_extractor.py
+│   │   ├── agent.py                   # Transcript analysis and export-format orchestration
+│   │   ├── parsers/
+│   │   │   ├── format_detector.py      # VTT, SRT, labeled, and plain transcript detection
+│   │   │   └── speaker_extractor.py    # Speaker parsing extension point
 │   │   ├── requirements.txt
 │   │   ├── .env.example
 │   │   └── README.md
+│   │
 │   ├── data-analyst/
-│   │   ├── agent.py
-│   │   ├── core/               # Modular subpackage
-│   │   │   ├── data_loader.py
-│   │   │   ├── code_generator.py
-│   │   │   └── safe_executor.py
+│   │   ├── agent.py                   # Profile display and interactive analysis REPL
+│   │   ├── core/
+│   │   │   ├── data_loader.py         # CSV/Excel loading and aggregate profiling
+│   │   │   ├── code_generator.py       # Natural-language question to pandas code
+│   │   │   └── safe_executor.py        # Restricted execution namespace for generated code
 │   │   ├── requirements.txt
 │   │   ├── .env.example
 │   │   └── README.md
-└── README.md                   # This file
+│   │
+│   ├── dependency-upgrader/
+│   │   ├── agent.py                   # End-to-end upgrade scan and report CLI
+│   │   ├── core/
+│   │   │   ├── manifest_parser.py      # requirements, pyproject, package.json, and go.mod parsing
+│   │   │   ├── registry_client.py      # PyPI, npm, Go proxy, GitHub releases, and caching
+│   │   │   ├── usage_scanner.py        # Local import and usage-site discovery
+│   │   │   └── risk_assessor.py        # Version-gap logic and Claude risk assessment
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
+│   ├── onboarding-generator/
+│   │   ├── agent.py                   # Onboarding document CLI and output formatting
+│   │   ├── core/
+│   │   │   ├── repo_analyzer.py        # Structure, language, framework, and entry-point detection
+│   │   │   ├── ownership_mapper.py     # Git contributor and bus-factor analysis
+│   │   │   ├── setup_detector.py        # Setup files, commands, and environment evidence
+│   │   │   └── doc_builder.py            # Claude guide synthesis and Markdown rendering
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
+│   ├── config-auditor/
+│   │   ├── agent.py                   # Config discovery, reporting, and CI exit codes
+│   │   ├── auditors/
+│   │   │   ├── docker_rules.py         # Dockerfile image, user, layer, secret, and health checks
+│   │   │   ├── k8s_rules.py            # Kubernetes probes, resources, secrets, and security checks
+│   │   │   ├── ci_rules.py             # GitHub Actions and GitLab CI safety checks
+│   │   │   └── ai_reviewer.py           # Optional cross-file Claude review
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
+│   ├── postmortem-writer/
+│   │   ├── agent.py                   # Notes input, severity style, template, and output CLI
+│   │   ├── core/
+│   │   │   ├── input_parser.py         # Plain text/Slack normalization and timeline extraction
+│   │   │   └── postmortem_builder.py   # Blameless Claude schema and Markdown assembly
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
+│   └── a11y-auditor/
+│       ├── agent.py                   # Source discovery, reporting, HTML output, and CI gating
+│       ├── auditors/
+│       │   ├── static_rules.py         # HTML/JSX/TSX/Vue WCAG source checks
+│       │   ├── framework_detector.py   # React, Vue, and plain HTML detection
+│       │   └── ai_reviewer.py           # Optional contextual WCAG review
+│       ├── requirements.txt
+│       ├── .env.example
+│       └── README.md
 ```
 
+### Shared File Conventions
+
+Every agent follows the same local contract:
+
+- `agent.py` is the executable entry point and owns the public CLI flags.
+- `requirements.txt` lists only dependencies needed by that agent.
+- `.env.example` documents API keys or optional service credentials without storing secrets.
+- `README.md` explains setup, examples, outputs, limitations, and safety behavior.
+- `core/`, `auditors/`, `scanner/`, `parsers/`, `generators/`, `db/`, and `research/` contain
+  focused modules when the agent has more than one responsibility.
+
+### How Data Flows Through an Agent
+
+Most agents follow a predictable pipeline:
+
+1. **Input discovery** reads a file, project directory, git range, transcript, log, or database.
+2. **Deterministic analysis** parses structure, applies rules, extracts metadata, or finds local
+	usage before any model call. This makes the free modes reproducible and reduces API cost.
+3. **Contextual analysis** sends only the relevant material to Claude when AI review is enabled.
+4. **Structured output** converts the result into JSON-like data before rendering tables, Markdown,
+	HTML, SQL results, release notes, or postmortems.
+5. **Safety handling** validates, backs up, limits, or clearly labels the result before writing files
+	or applying changes.
+
+The project is not one large Python package. Run commands from the individual agent directory so
+its local imports and dependencies resolve exactly as documented.
+
 ---
 
-## Comparison: These Agents vs. SaaS
+## Total Value Replaced
 
-| Need | SaaS Tool | Cost | Our Solution | Time to Use |
-|------|-----------|------|--------------|------------|
-| Review PRs | GitHub Copilot | $10/mo | PR Reviewer | 5 seconds |
-| Explain codebases | GitHub Copilot Chat | $10/mo | Codebase Explainer | 10 seconds |
-| Find bugs | Snyk/SonarQube | $100–500/mo | Bug Hunter | 5 seconds |
-| Security audit | Snyk | $98/mo | Security Scanner | 30 seconds |
-| Write commits | IDE extensions | $0–50/mo | Commit Writer | 3 seconds |
-| Generate README | ReadMe.io | $100/mo | README Generator | 10 seconds |
-| Query database | Outerbase | $50/mo | Query Builder | 5 seconds (setup) |
-| Refactor code | Devin/GitHub Copilot | $500+/mo | Refactor Agent | 30 seconds |
-| Research topics | Perplexity Pro | $20/mo | Research Agent | 60 seconds |
-| API docs | ReadMe.io/Swagger UI | $100+/mo | API Doc Generator | 10 seconds |
-| Release notes | Manual + templates | $0/mo | Changelog Generator | 10 seconds |
-| Unit tests | Test frameworks + manual | $0/mo | Test Suite Generator | 20 seconds |
-| Log analysis | Splunk/DataDog | $200+/mo | Log Analyzer | 15 seconds |
-| Meeting notes | Otter.ai/Otter.ai | $30/mo | Meeting Agent | 10 seconds |
-| Data analysis | Tableau/Retool | $300+/mo | Data Analyst | 5 seconds (setup) |
+| Category | Agents | Typical Monthly SaaS Cost |
+|---|---|---|
+| Code review & intelligence | PR Reviewer, Codebase Explainer, Bug Hunter, Commit Writer, README Generator | ~$175 |
+| Security & infra | Security Scanner, Config Auditor, Dependency Upgrader | ~$150+ |
+| Database & data | Query Builder, Data Analyst | ~$350 |
+| Autonomous coding | Refactor Agent | ~$500 |
+| Research & docs | Research Agent, API Doc Generator, Changelog Generator | ~$120 |
+| Testing & ops | Test Suite Generator, Log Analyzer, Postmortem Writer | ~$220+ |
+| Meetings & onboarding | Meeting Agent, Onboarding Generator | ~$30+ |
+| Accessibility | Accessibility Auditor | Varies |
+| **Total** | **20 agents** | **~$1,300+/month in equivalent tools** |
 
----
+Your actual cost: Claude API usage, typically **$0.01–$0.60 per run** depending on the agent and input size.
 
-## Getting Started
-
-1. **Clone or download this repo**
-2. **Pick an agent:**
-   - Start with **PR Reviewer** or **Bug Hunter** (simplest, most useful)
-   - Or **Security Scanner** if you want a practical security audit
-   - Or **Query Builder** if you have a database
-   - Or **Data Analyst** for interactive CSV exploration
-3. **Install:** `pip install -r agents/{agent}/requirements.txt`
-4. **Configure:** `ANTHROPIC_API_KEY=sk-... python agents/{agent}/agent.py`
-5. **Run!**
+*(These are rough, good-faith estimates of comparable product pricing for context — not a formal cost audit.)*
 
 ---
 
 ## FAQ
 
-**Q: Do I need to run all 15 agents?**  
-A: No. Each agent is independent. Pick what you need.
+**Do I need to set up all 20 agents?**
+No. Each one is fully independent. Pick the one you need and ignore the rest.
 
-**Q: What's the cost?**  
-A: Claude API costs. Most agents: $0.01–$0.30 per run. vs. $50–$500/month SaaS.
+**What's the actual cost to run one?**
+Just Claude API usage — most agents cost $0.01–$0.30 per run. Heavier agents like deep Research Agent runs or large Refactor Agent sessions can run up to ~$0.60.
 
-**Q: Can I self-host?**  
-A: The code is open source. You need Anthropic API key (no self-hosting of Claude yet).
+**Can I self-host, with no API calls to Anthropic?**
+No — these agents call the Claude API for the reasoning steps. You need an `ANTHROPIC_API_KEY`. The code itself is fully open source and yours to modify.
 
-**Q: Are these production-ready?**  
-A: Yes. Real CLI tools, error handling, modular architecture. Tested syntax validation on all 15 agents.
+**Are these actually production-ready, or demos?**
+They're built to be run for real. That said, this is a young project — if you hit a bug, please open an issue. See each agent's own README for anything not yet implemented.
 
-**Q: Why Claude instead of GPT-4?**  
-A: Claude is better at structured output (JSON), faster, cheaper for tokens, and excellent at code analysis.
+**Why Claude instead of GPT-4/GPT-5?**
+Strong structured JSON output, good long-context handling for reading full codebases/transcripts, and solid code reasoning at reasonable cost. Nothing stops you from porting the API calls to another provider.
 
-**Q: What about Batch 3 agents — are they as polished as Batch 1-2?**  
-A: Yes. Changelog Generator, Test Suite Generator, Log Analyzer, Meeting Agent, and Data Analyst all follow the same production patterns: modular architecture, real CLI, Rich terminal UI, JSON-structured Claude responses, and full documentation.
+**Is my code/data sent anywhere besides Anthropic?**
+Only to the Claude API for the specific content each agent needs. Data Analyst specifically sends column names, types, and aggregate stats rather than raw rows. See each agent's README for its specific data-handling notes.
+
+---
+
+## Contributing
+
+Found a bug? Have an idea for agent #21? Open an issue or a PR. Areas that could especially use help:
+
+- JavaScript/TypeScript support for Test Suite Generator
+- Node.js and Go route parsers for API Doc Generator
+- More database drivers for Query Builder
 
 ---
 
 ## License
 
-MIT License — Use freely, modify, redistribute.
-
----
-
-## Support
-
-Each agent has a `README.md` with detailed usage docs and examples.
-
-Questions? Check the individual agent READMEs first.
-
----
-
-## Total Savings
-
-| Category | Agents | Monthly Cost | With These Tools |
-|----------|--------|--------------|------------------|
-| Code review | PR Reviewer | $10 | $0 (pay per use) |
-| Code intelligence | Codebase Explainer | $10 | $0 (pay per use) |
-| Bug detection | Bug Hunter | $50 | $0 (pay per use) |
-| Commit generation | Commit Writer | $5 | $0 (pay per use) |
-| Documentation | README Generator, API Doc Generator | $200 | $0 (pay per use) |
-| Security | Security Scanner | $98 | ~$0.20 per scan |
-| Database | Query Builder | $50 | ~$0.02 per query |
-| Refactoring | Refactor Agent | $500 | ~$0.30 per refactor |
-| Research | Research Agent | $20 | ~$0.10–$0.60 per report |
-| **TOTAL** | **10 agents** | **$768/month** | **~$0.01–$0.30 per use** |
-
----
-
-**Built with Claude. Designed for developers. Open source. Let's go.**
+MIT License — use freely, modify, redistribute.
