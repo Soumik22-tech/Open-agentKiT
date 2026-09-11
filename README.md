@@ -1,12 +1,12 @@
-# AI Agents — Open Source Replacement for $768/month in SaaS Tools
+# AI Agents — Open Source Replacement for $1000+/month in SaaS Tools
 
-10 production-ready Python CLI agents that replicate expensive SaaS products. Built with Claude AI, zero dependencies beyond Anthropic SDK + Rich terminal UI.
+15 production-ready Python CLI agents that replicate expensive SaaS products. Built with Claude AI, zero dependencies beyond Anthropic SDK + Rich terminal UI.
 
-**Total SaaS value replaced: $768/month**
+**Total SaaS value replaced: $1000+/month**
 
 ---
 
-## The 10 Agents
+## The 15 Agents
 
 ### Batch 1: Code Intelligence (GitHub Copilot Replacement)
 
@@ -27,6 +27,16 @@
 | **Refactor Agent** | Devin AI | $500/mo | Multi-file code refactoring with planning, execution, rollback | ~$0.30 per refactoring |
 | **Research Agent** | Perplexity Pro | $20/mo | Web search + synthesis + report generation with citations | ~$0.10-$0.60 per report |
 | **API Doc Generator** | ReadMe.io | $100/mo | FastAPI/Flask → OpenAPI spec + HTML docs + Postman collection | ~$0.05 per project |
+
+### Batch 3: Developer Workflow & Data Intelligence
+
+| Agent | SaaS Equivalent | Price | What It Does | Cost to Run |
+|-------|-----------------|-------|-------------|------------|
+| **Changelog Generator** | Release Notes automation | $0/mo | Git log → professional release notes (Keep a Changelog format) | ~$0.05 per release |
+| **Test Suite Generator** | GitHub Copilot + pytest | $30/mo | Source code → comprehensive pytest tests with validation loop | ~$0.10 per file |
+| **Log Analyzer** | Splunk/DataDog | $200+/mo | Error logs + stack traces → root cause analysis + code context | ~$0.08 per log |
+| **Meeting Agent** | Otter.ai | $30/mo | Meeting transcript → summary, decisions, action items with owners/deadlines | ~$0.10 per meeting |
+| **Data Analyst** | Retool/Tableau + analyst time | $300+/mo | Interactive CSV/Excel analysis via natural language pandas queries | ~$0.02 per query |
 
 ---
 
@@ -117,6 +127,39 @@ python agent.py --topic "impact of AI on software engineering" --depth deep --ht
 cd agents/api-doc-generator
 python agent.py --project /path/to/fastapi/app --serve
 # Generates: openapi.json, index.html, postman_collection.json
+```
+
+### 11. Generate Release Notes (Changelog Generator)
+```bash
+cd agents/changelog-generator
+python agent.py --from v1.2.0 --to v1.3.0 --output CHANGELOG.md --append
+```
+
+### 12. Generate Test Suites (Test Suite Generator)
+```bash
+cd agents/test-generator
+python agent.py --file src/utils.py --run --coverage
+```
+
+### 13. Analyze Error Logs (Log Analyzer)
+```bash
+cd agents/log-analyzer
+python agent.py --log error.log --repo /path/to/project
+# Or: cat error.log | python agent.py --stdin
+```
+
+### 14. Extract Meeting Action Items (Meeting Agent)
+```bash
+cd agents/meeting-agent
+python agent.py --transcript zoom_transcript.vtt --output notes.md --format markdown
+# Or: --format slack, --format jira
+```
+
+### 15. Analyze Data with SQL-less Queries (Data Analyst)
+```bash
+cd agents/data-analyst
+python agent.py --file data.csv
+# Interactive: "Show top 10 rows by date", "Average salary by department", etc.
 ```
 
 ---
@@ -223,18 +266,58 @@ python agent.py --project /path/to/fastapi/app --serve
 │   │   │   └── synthesizer.py
 │   │   ├── requirements.txt
 │   │   └── .env.example
-│   └── api-doc-generator/
-│       ├── agent.py
-│       ├── parsers/            # Modular subpackage
-│       │   ├── python_parser.py
-│       │   ├── node_parser.py
-│       │   └── go_parser.py
-│       ├── generators/         # Modular subpackage
-│       │   ├── openapi.py
-│       │   ├── html_docs.py
-│       │   └── postman.py
-│       ├── requirements.txt
-│       └── .env.example
+│   ├── api-doc-generator/
+│   │   ├── agent.py
+│   │   ├── parsers/            # Modular subpackage
+│   │   │   ├── python_parser.py
+│   │   │   ├── node_parser.py
+│   │   │   └── go_parser.py
+│   │   ├── generators/         # Modular subpackage
+│   │   │   ├── openapi.py
+│   │   │   ├── html_docs.py
+│   │   │   └── postman.py
+│   │   ├── requirements.txt
+│   │   └── .env.example
+│   ├── changelog-generator/
+│   │   ├── agent.py
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   ├── test-generator/
+│   │   ├── agent.py
+│   │   ├── generators/         # Modular subpackage
+│   │   │   ├── python_analyzer.py
+│   │   │   ├── js_analyzer.py
+│   │   │   └── test_writer.py
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   ├── log-analyzer/
+│   │   ├── agent.py
+│   │   ├── analyzer/           # Modular subpackage
+│   │   │   ├── log_parser.py
+│   │   │   ├── code_context.py
+│   │   │   └── pattern_db.py
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   ├── meeting-agent/
+│   │   ├── agent.py
+│   │   ├── parsers/            # Modular subpackage
+│   │   │   ├── format_detector.py
+│   │   │   └── speaker_extractor.py
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
+│   ├── data-analyst/
+│   │   ├── agent.py
+│   │   ├── core/               # Modular subpackage
+│   │   │   ├── data_loader.py
+│   │   │   ├── code_generator.py
+│   │   │   └── safe_executor.py
+│   │   ├── requirements.txt
+│   │   ├── .env.example
+│   │   └── README.md
 └── README.md                   # This file
 ```
 
@@ -254,6 +337,11 @@ python agent.py --project /path/to/fastapi/app --serve
 | Refactor code | Devin/GitHub Copilot | $500+/mo | Refactor Agent | 30 seconds |
 | Research topics | Perplexity Pro | $20/mo | Research Agent | 60 seconds |
 | API docs | ReadMe.io/Swagger UI | $100+/mo | API Doc Generator | 10 seconds |
+| Release notes | Manual + templates | $0/mo | Changelog Generator | 10 seconds |
+| Unit tests | Test frameworks + manual | $0/mo | Test Suite Generator | 20 seconds |
+| Log analysis | Splunk/DataDog | $200+/mo | Log Analyzer | 15 seconds |
+| Meeting notes | Otter.ai/Otter.ai | $30/mo | Meeting Agent | 10 seconds |
+| Data analysis | Tableau/Retool | $300+/mo | Data Analyst | 5 seconds (setup) |
 
 ---
 
@@ -264,6 +352,7 @@ python agent.py --project /path/to/fastapi/app --serve
    - Start with **PR Reviewer** or **Bug Hunter** (simplest, most useful)
    - Or **Security Scanner** if you want a practical security audit
    - Or **Query Builder** if you have a database
+   - Or **Data Analyst** for interactive CSV exploration
 3. **Install:** `pip install -r agents/{agent}/requirements.txt`
 4. **Configure:** `ANTHROPIC_API_KEY=sk-... python agents/{agent}/agent.py`
 5. **Run!**
@@ -272,7 +361,7 @@ python agent.py --project /path/to/fastapi/app --serve
 
 ## FAQ
 
-**Q: Do I need to run all 10 agents?**  
+**Q: Do I need to run all 15 agents?**  
 A: No. Each agent is independent. Pick what you need.
 
 **Q: What's the cost?**  
@@ -282,10 +371,13 @@ A: Claude API costs. Most agents: $0.01–$0.30 per run. vs. $50–$500/month Sa
 A: The code is open source. You need Anthropic API key (no self-hosting of Claude yet).
 
 **Q: Are these production-ready?**  
-A: Yes. Real CLI tools, error handling, modular architecture. Tested syntax validation.
+A: Yes. Real CLI tools, error handling, modular architecture. Tested syntax validation on all 15 agents.
 
 **Q: Why Claude instead of GPT-4?**  
 A: Claude is better at structured output (JSON), faster, cheaper for tokens, and excellent at code analysis.
+
+**Q: What about Batch 3 agents — are they as polished as Batch 1-2?**  
+A: Yes. Changelog Generator, Test Suite Generator, Log Analyzer, Meeting Agent, and Data Analyst all follow the same production patterns: modular architecture, real CLI, Rich terminal UI, JSON-structured Claude responses, and full documentation.
 
 ---
 
